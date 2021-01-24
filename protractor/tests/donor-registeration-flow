@@ -1,0 +1,170 @@
+describe('rudhir website', function(){
+
+    it('rudhir login', function(){
+
+        var selectDropdownbyNum = function (element, optionNum) {
+            if (optionNum){
+              var options = element.all(by.tagName('option'))   
+                .then(function(options){
+                  options[optionNum].click();
+                });
+            }
+          };
+
+        console.log("Navigating to landing page");
+        browser.get('http://devrudh.s3-website.ap-south-1.amazonaws.com/');
+
+        console.log("Clicking on Donar Registration Link");
+        let donorRegistrationLink = element(by.xpath("//h6[contains(text(),'Donor Registration')]"));
+        donarRegistrationLink.click();
+        browser.sleep(1000);
+        
+        console.log("Filling Donor First Name");
+        let donorFirstName = element(by.css('input[name="firstName"]')).click();
+        patientFirstName.sendKeys('Adit');
+        browser.sleep(1000);
+
+        console.log("Filling Donor Last Name");
+        let patientLastName = element(by.css('input[name="lastName"]')).click();
+        patientLastName.sendKeys('Ghone');
+        browser.sleep(1000);
+
+        console.log("Filling Donor Age");
+        let donorAge = element(by.css('select[name="age"]')).click();
+        patientAge.sendKeys('33');
+        browser.sleep(1000);
+		
+        console.log("Selecting Donor Blood Group");
+        let patientBloodGroup = element(by.id('bloodGroup'));
+
+       selectDropdownbyNum(donorBloodGroup, 0);
+        expect(donorBloodGroup.$('option:checked').getText()).toEqual(' Select Your Blood Group ');
+
+        selectDropdownbyNum(donorBloodGroup, 1);
+        expect(donorBloodGroup.$('option:checked').getText()).toEqual(' A+ ');
+
+        selectDropdownbyNum(donorBloodGroup, 2);
+        expect(donorBloodGroup.$('option:checked').getText()).toEqual(' B+ ');
+
+        selectDropdownbyNum(donorBloodGroup, 3);
+        expect(donorBloodGroup.$('option:checked').getText()).toEqual(' AB+ ');
+
+        selectDropdownbyNum(donorBloodGroup, 4);
+        expect(donorBloodGroup.$('option:checked').getText()).toEqual(' O+ ');
+
+        selectDropdownbyNum(donorBloodGroup, 5);
+        expect(donorBloodGroup.$('option:checked').getText()).toEqual(' A- ');
+
+        selectDropdownbyNum(donorBloodGroup, 6);
+        expect(donorBloodGroup.$('option:checked').getText()).toEqual(' B- ');
+
+        selectDropdownbyNum(donorBloodGroup, 7);
+        expect(donorBloodGroup.$('option:checked').getText()).toEqual(' AB- ');
+
+        selectDropdownbyNum(donorBloodGroup, 8);
+        expect(patientBloodGroup.$('option:checked').getText()).toEqual(' O- ');
+
+        selectDropdownbyNum(donorBloodGroup, 4);
+        browser.sleep(1000);
+		
+		
+		console.log("Last Blood Donation ");
+        let lastdonation = element(by.id('lastdonation'));
+        validTill.clear();
+        validTill.sendKeys('12/11/2011');
+        browser.sleep(1000);
+		
+		
+		console.log("Selecting Donor Gender");
+        let patientGender = element(by.id('gender'));
+
+        selectDropdownbyNum(donorGender, 0);
+        expect(donorGender.$('option:checked').getText()).toEqual('Select Gender');
+
+        selectDropdownbyNum(donorGender, 1);
+        expect(donorGender.$('option:checked').getText()).toEqual('Male');
+
+        selectDropdownbyNum(donorGender, 2);
+        expect(donorGender.$('option:checked').getText()).toEqual('Female');
+
+        selectDropdownbyNum(donorGender, 3);
+        expect(donorGender.$('option:checked').getText()).toEqual('Other');
+
+        selectDropdownbyNum(donorGender, 4);
+        expect(patientGender.$('option:checked').getText()).toEqual('Unspecified');
+
+        selectDropdownbyNum(donorGender, 2);
+        browser.sleep(1000);
+		
+		
+		console.log("Filling Emailid");
+        let donorFirstName = element(by.css('input[name="emailId"]')).click();
+        patientFirstName.sendKeys('adityag@gmail.com');
+        browser.sleep(1000);
+		
+		 console.log("Filling donor Cell Number ");
+        let donorCellNumber = element(by.css('input[name="cellNumber"]')).click();
+        patientCellNumber.clear();
+        patientCellNumber.sendKeys('9999999999');
+        browser.sleep(1000);
+		
+		
+		 console.log("Filling Society Name");
+        let donarSocietyName = element(by.css('input[name="society"]')).click();
+        patientAppeal.sendKeys('Siddhivinayak Nagri');
+        browser.sleep(1000);
+		
+		 console.log("Filling Area Name");
+        let donarareaName = element(by.css('input[name="area"]')).click();
+        donorarea.sendKeys('Nigdi');
+        browser.sleep(1000);
+		
+		 console.log("Filling City Name");
+        let donarCityName = element(by.css('input[name="city"]')).click();
+        donorCity.sendKeys('Pune');
+        browser.sleep(1000);
+		
+		 console.log("Filling Pincode");
+        let donarPinCode =  element(by.css('input[name="pin"]')).click();
+        donorCity.sendKeys('411044');
+        browser.sleep(1000);
+		
+		console.log("Filling Office Building");
+        let donarOfficeBuilding = element(by.css('input[name="officeBuilding"]')).click(); 
+        donorCity.sendKeys('Nigdi');
+        browser.sleep(1000);
+		
+		console.log("Filling Office Area");
+        let donarOfficeArea = element(by.css('input[name="officeArea"]')).click();
+        donorCity.sendKeys('Nigdi');
+        browser.sleep(1000);
+		
+		console.log("Filling Office City");
+        let donarOfficeCity = element(by.css('input[name="officeCity"]')).click();
+        donorCity.sendKeys('Pune');
+        browser.sleep(1000);
+		
+		console.log("Filling Office Pincode");
+        let donarOfficePinCode = element(by.css('input[name="officePin"]')).click();
+        donorCity.sendKeys('411044');
+        browser.sleep(1000);
+
+       
+        console.log("Clicking on Register");
+        let registerButton = element(by.className('btn btn-primary btn-lg'));
+        registerButton.click();
+
+        console.log("Clicking on Register");
+        let otpTxtField = element(by.className('form-control ng-valid ng-touched ng-dirty'));
+        otpTxtField.sendKeys('123abc');
+
+        console.log("Clicking on Verify");
+        let verifyButton = element(by.className('btn btn-primary btn-lg'));
+        verifyButton.click();
+
+        console.log("Donor Registration Completed");
+        browser.sleep(1000);
+
+    }, 120000);
+
+});
